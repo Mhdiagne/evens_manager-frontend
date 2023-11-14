@@ -1,0 +1,82 @@
+/* Page prestataire*/
+
+/*Recherche prestataire*/
+
+.display{
+    display: flex;
+    justify-content:center;
+}
+
+.icon-search{
+    width: 25px;
+    height: 25px;
+    margin: 30px 10px;
+    color: black;
+}
+
+.icon-search:hover{
+    width: 30px;
+    height: 30px;
+    color: var(--bs-primary);
+}
+
+.search-btn{
+    background-color: #ffff;
+    border: none;
+}
+
+.search-label{
+    font-size: 1.8rem;
+    color: black;
+    font-weight: 600;
+    margin: 25px 30px ;
+}
+.search{
+    width: 600px;
+    border: 1px solid black;
+    color: black;
+    background-color: #fdfaf1;
+    max-height: 40px;
+    margin: 25px 0px 0px 0px;
+}
+/*End Recherche prestataire*/
+
+/*List prestataire*/
+.imagep{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+.ligne{
+    background-color: #fdfaf1;
+    width: 80%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    margin: 20px auto !important;
+    box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, .08);
+    padding: 10px;
+}
+.dessus{
+    display: block;
+}
+.dessus>p{
+    width: 400px;
+}
+.ligne>h4{
+    margin: 20px;
+}
+.ligne>h6{
+    margin-top: 60px;
+}
+.ligne>p{
+    color: black;
+    font-size: 1.1rem;
+    margin-top: 0px;
+}
+/*End List prestataire*/
+
+/* Page prestataire End*/
+
+
