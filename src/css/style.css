@@ -134,12 +134,12 @@ h4, h5, h6, .h4, .h5, .h6 {
     margin-left: 8px;
 }
 
-/* .smalogin{
+.smalogin{
     width: 3em; 
     height: 3em;
     border: 2px solid var(--bs-primary);
     z-index: 100;
-} */
+} 
 
 @media (min-width: 1800px) {
     .navbar .nav-item .dropdown-menu {
