@@ -43,11 +43,11 @@ function SignInForm() {
         </div>
         <span>or use your account</span>
         <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={state.email}
+          type="text"
+          name="name"
+          value={state.name}
           onChange={handleChange}
+          placeholder="UserName"
         />
         <input
           type="password"

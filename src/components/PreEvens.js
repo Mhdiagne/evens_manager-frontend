@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../css/bootstrap.min.css";
 import "../css/style.css";
 import BoxEvens from './BoxEvens';
@@ -13,23 +13,27 @@ import ramadan from "../assets/img/ramadan.jpg"
 import hbd2 from "../assets/img/hbd2.jpg";
 import gamou from "../assets/img/gamou.jpg";
 
-import { FaPlus } from "react-icons/fa";
 import { HiViewList } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
+import CreateEvens from '../components/CreateEvents';
+
 const PreEvens = () => {
+
+
     return (
         <div className="container-fluid event py-6">
             <div className="container">
                 <div className="text-center wow bounceInUp" data-wow-delay="0.1s">
-                   <Link to = "/login">
-                        <contain className='new'><FaPlus /> New Event </contain>
-                   </Link>
-                   <Link to = "/login">
-                        <Link to = "/createEvents">
-                             <contain className='myevent'><HiViewList /> My Event</contain>
+                    <div >
+                        <Link  >
+                            <CreateEvens />
+                        </Link>                
+                        
+                        <Link to = "/listEvents">
+                            <contain className='myevent'><HiViewList /> MY EVENT</contain>
                         </Link> 
-                   </Link>
+                    </div>
                     <h1 className="display-5 mb-3 mt-5">Différents types d'événement</h1>
                 </div>
                 <div className="tab-class text-center">
@@ -63,8 +67,7 @@ const PreEvens = () => {
                                 <div class="col-lg-12">
                                     <div class="row g-5">
                                         <BoxEvens nom="Mariage" image={mariage}/>
-                                        <BoxEvens nom="Magal Touba" image={magal}/>
-                                       
+                                        <BoxEvens nom="Magal Touba" image={magal}/>             
                                         <BoxEvens nom="Gamou" image={gamou}/>
                                         <BoxEvens nom="Seminaire" image={seminaire}/>
                                         <BoxEvens nom="Conférence" image={conference}/>                 

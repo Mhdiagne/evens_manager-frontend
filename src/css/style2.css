@@ -75,8 +75,16 @@
     font-size: 1.1rem;
     margin-top: 0px;
 }
+
 /*End List prestataire*/
 
 /* Page prestataire End*/
 
+/*Create event*/
 
+.all-form{
+    padding: 80px 0px;
+    height: 800px;
+}
+
+/*End create event*/

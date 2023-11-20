@@ -4,7 +4,7 @@ import Evens from './pages/Events';
 import Prestataires from "./pages/Prestataires";
 import About from "./pages/About";
 import Login from "./pages/Login";
-import CreateEvents from "./pages/CreateEvents";
+import ListEvents from "./pages/ListEvents";
 
 
 
@@ -17,7 +17,7 @@ function App() {
         <Route path = '/prestataires' element ={<Prestataires />} />
         <Route path = '/about' element ={<About />} />
         <Route path = '/login' element ={<Login/>}/>
-        <Route path = '/createEvents' element ={<CreateEvents />} />
+        <Route path = '/listEvents' element ={<ListEvents/>}/>
       </Routes>
     </div>
   );

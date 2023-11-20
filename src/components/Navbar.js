@@ -30,8 +30,8 @@ const Navbar = () => {
                             {/* Plus de liens ici */}
                         </div>
                     </div>
-                    <Link to = "/login" className="smalogin">
-                            <button className="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-none d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <Link to = "/login" >
+                            <button className="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal">
                                 <FaUserCircle />
                             </button>
                     </Link>

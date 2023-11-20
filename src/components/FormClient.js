@@ -31,9 +31,9 @@ const FormClient = () => {
         }
       };
     return (
-        <div className="form-contain sign-up-contain">
+        <div className="client-contain">
             <form onSubmit={handleOnSubmit}>
-                <h1>Crée ton compte Client !</h1>
+                <h3>Crée ton compte Client !</h3>
                 <div className="social-contain">
                 <a href="#" className="social">
                     <i className="fab fa-facebook-f" />
@@ -51,7 +51,7 @@ const FormClient = () => {
                 name="name"
                 value={state.name}
                 onChange={handleChange}
-                placeholder="Name"
+                placeholder="UserName"
                 />
                 <input
                 type="email"
@@ -66,6 +66,13 @@ const FormClient = () => {
                 value={state.password}
                 onChange={handleChange}
                 placeholder="Password"
+                />
+                <input
+                type="password"
+                name="password"
+                value={state.password}
+                onChange={handleChange}
+                placeholder="Confirm Password"
                 />
                 <button className="My-btn">S'inscrire</button>
             </form>

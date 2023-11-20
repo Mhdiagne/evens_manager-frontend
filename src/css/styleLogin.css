@@ -28,7 +28,7 @@
   .texte-Form {
     text-align: center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    
+    margin-bottom: 20px;
   }
   
   p {
@@ -147,6 +147,17 @@
     opacity: 1;
     z-index: 5;
     animation: show 0.6s;
+  }
+
+
+  .client-contain, .pres-contain{
+    position: absolute;
+    top: 0;
+    padding-top: 30px;
+  }
+
+  .pres-contain>form>h3{
+    font-size: 1.6rem;
   }
   
   @keyframes show {

@@ -31,9 +31,9 @@ const FormPrestataire = () => {
         }
       };
     return (
-        <div className="form-contain sign-up-contain">
+        <div className="pres-contain">
             <form onSubmit={handleOnSubmit}>
-                <h1>Crée ton compte Prestataire !</h1>
+                <h3>Crée ton compte Prestataire!</h3>
                 <div className="social-contain">
                 <a href="#" className="social">
                     <i className="fab fa-facebook-f" />
@@ -51,7 +51,7 @@ const FormPrestataire = () => {
                 name="name"
                 value={state.name}
                 onChange={handleChange}
-                placeholder="Name"
+                placeholder="UserName"
                 />
                 <input
                 type="email"
@@ -66,6 +66,13 @@ const FormPrestataire = () => {
                 value={state.password}
                 onChange={handleChange}
                 placeholder="Password"
+                />
+                <input
+                type="password"
+                name="password"
+                value={state.password}
+                onChange={handleChange}
+                placeholder="Confirm Password"
                 />
                 <button className="My-btn">S'inscrire</button>
             </form>
