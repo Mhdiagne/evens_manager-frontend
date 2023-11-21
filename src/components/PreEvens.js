@@ -31,7 +31,7 @@ const PreEvens = () => {
                         </Link>                
                         
                         <Link to = "/listEvents">
-                            <contain className='myevent'><HiViewList /> MY EVENT</contain>
+                            <button className='myevent'><HiViewList /> MY EVENT</button>
                         </Link> 
                     </div>
                     <h1 className="display-5 mb-3 mt-5">Différents types d'événement</h1>
