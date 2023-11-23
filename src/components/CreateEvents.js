@@ -40,7 +40,7 @@ const CreateEvents = (props) => {
         <FaPlus/>Create Event
       </Button>
       <Dialog id="all-form" maxWidth="lg" open={open} onClose={handleClose}>
-      <div className ='kay-fi' ><h2>Créer votre evenement</h2></div>
+      <div className ='kay-fi' ><h2>Créer votre évènement</h2></div>
         <DialogContent>
             
             <div >

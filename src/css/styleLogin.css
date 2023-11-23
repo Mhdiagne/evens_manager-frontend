@@ -28,7 +28,7 @@
   .texte-Form {
     text-align: center;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   p {
@@ -139,7 +139,6 @@
     left: 0;
     width: 50%;
     opacity: 0;
-    z-index: 3;
   }
   
   .contain.right-panel-active .sign-up-contain {
@@ -260,7 +259,6 @@
   
   .intermediaire{
     background-color: white;
-    z-index: 6;
     align-items: center;
     padding: 150px 0px 0px 0px;
   }
