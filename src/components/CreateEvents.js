@@ -1,4 +1,5 @@
 import React from 'react';
+import { SERVER_URL } from '../constants';
 
 import { Autocomplete,InputAdornment,DialogContent,DialogActions,Dialog,TextField,Button } from '@mui/material';
 
@@ -14,6 +15,20 @@ import traiteur from '../assets/img/traiteurAfricain.jpeg';
 
 const CreateEvents = (props) => {
     const [open, setOpen] = React.useState(false);
+    const [prestataires, setPrestataires] = React.useState([
+      {label:"", profile:"",name:""}
+    ]);
+    const [options, setOptions] = React.useState([]);
+
+    React.useEffect(()=>{
+      fetchPrestataires();
+      const newOptions = prestataires.map(opt => ({
+        label: 'Option 1',
+        profile: opt.image,
+        name: opt.nomEntreprise,
+      }));
+      setOptions(newOptions);
+    },[prestataires]);
   
     const handleClickOpen = () => {
         setOpen(true);
@@ -23,16 +38,15 @@ const CreateEvents = (props) => {
       setOpen(false);
     };
 
-    const options = [
-      { label: 'Option 1', profile: animateur, name: 'Animateur' },
-      { label: 'Option 2', profile: traiteur, name: 'Traiteur' },
-      { label: 'Option 3', profile: foto, name: 'Photographe' },
-      { label: 'Option 4', profile: securite, name: 'Securite' },
-      { label: 'Option 5', profile: art, name: 'Artiste' },
-      { label: 'Option 5', profile: deco, name: 'Decoratrice' },
-     
-      // Ajoutez autant d'options que nécessaire
-    ];
+    const fetchPrestataires = () => {
+          const token = sessionStorage.getItem("jwt");
+          fetch(SERVER_URL+"event/prestataires", {
+              headers: {Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAxMDMyNzA3fQ.otyDsTjvxJNwSmmtQuK8HkaGfuHNEU_hjGWONXjYQjs"},
+          })
+              .then(response => response.json())
+              .then(data => setPrestataires(data._embedded.prestataires))
+              .catch(err => console.error(err));
+      };
 
   return (
     <React.Fragment >

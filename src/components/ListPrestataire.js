@@ -16,7 +16,7 @@ const ListPrestataire = () => {
     const fetchPrestataires = () => {
         const token = sessionStorage.getItem("jwt");
         fetch(SERVER_URL+"event/prestataires", {
-            headers: {Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAwNzcyMTMxfQ.gwPa_yxDVsAg9t5fbck61fg-fKRWB4vQn30gtrwHX38"},
+            headers: {Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAxMDMyNzA3fQ.otyDsTjvxJNwSmmtQuK8HkaGfuHNEU_hjGWONXjYQjs"},
         })
             .then(response => response.json())
             .then(data => setPrestataires(data._embedded.prestataires))
@@ -26,7 +26,7 @@ const ListPrestataire = () => {
         <div>
             <h1 style={{margin: "40px 0px 40px", textAlign:"center",}}>Tous les Prestataires</h1>
             {
-                prestataires.map(pres => {
+                prestataires.map(pres => {                                                          
                     console.log(pres.image);
                     return(
                     <RowPrestataire 
