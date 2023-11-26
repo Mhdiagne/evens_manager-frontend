@@ -11,7 +11,7 @@ export default function App() {
       setType(text);
       return;
     }
-  };
+  }; 
   const containClass =
     "contain " + (type === "signUp" ? "right-panel-active" : "");
   return (
