@@ -4,11 +4,17 @@ import "../css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle';
 import "../css/style.css";
 import { FaUserCircle } from "react-icons/fa";
+import { useAuth } from './AuthProvider';
 
 const Navbar = () => {
-      
+
+    const { logout,login} = useAuth();
+    if (login){
+        console.log("okkkk");
+    }
     return (
         <div className="container-fluid nav-bar">
+            
             <div className="container">
                 <nav className="navbar navbar-light navbar-expand-lg py-4">
                     <Link to = "/" className="navbar-brand">
@@ -30,8 +36,10 @@ const Navbar = () => {
                             {/* Plus de liens ici */}
                         </div>
                     </div>
+                    
+                        <button>Deconnexion</button>
                     <Link to = "/login" >
-                            <button className="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-lg-inline-flex" data-bs-toggle="modal" data-bs-target="#searchModal">
+                            <button className="btn-search btn btn-primary btn-md-square me-4 rounded-circle d-lg-inline-flex" >
                                 <FaUserCircle />
                             </button>
                     </Link>

@@ -139,7 +139,6 @@
     left: 0;
     width: 50%;
     opacity: 0;
-    z-index: 3;
   }
   
   .contain.right-panel-active .sign-up-contain {
@@ -158,6 +157,7 @@
 
   .pres-contain>form>h3{
     font-size: 1.6rem;
+    margin-top: 8px;
   }
   
   @keyframes show {
@@ -188,6 +188,7 @@
   .contain.right-panel-active .overlay-contain {
     transform: translateX(-100%);
   }
+
   
   .overlay {
     background: linear-gradient(
@@ -245,6 +246,7 @@
   
   .social-contain {
     margin: 20px 0;
+    margin-top: 1px;
   }
   
   .social-contain a {
@@ -260,7 +262,6 @@
   
   .intermediaire{
     background-color: white;
-    z-index: 6;
     align-items: center;
     padding: 150px 0px 0px 0px;
   }
@@ -278,3 +279,13 @@
     font-weight: 600;
     color: #fff;
   }
+  .pres-contain .alert{
+    margin-top: -25px;
+    margin-left: 15px;
+    padding: 1px;
+}
+.pres-contain .success{
+  margin-top: -25px;
+  margin-left: 15px;
+  padding: 1px;
+}

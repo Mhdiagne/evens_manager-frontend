@@ -5,13 +5,19 @@ import Prestataires from "./pages/Prestataires";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import ListEvents from "./pages/ListEvents";
+import SignInForm from "./components/SignIn";
+import { useState } from "react";
+import { Navbar } from "react-bootstrap";
+import { AuthProvider } from "./components/AuthProvider";
 
 
 
 function App() {
+
   return (
-    <div className="App">    
-      <Routes>
+    <AuthProvider>
+        <div className="App"> 
+        <Routes>
         <Route path = '/' element ={<Acceuil />} />
         <Route path = '/events' element ={<Evens />} />
         <Route path = '/prestataires' element ={<Prestataires />} />
@@ -20,6 +26,8 @@ function App() {
         <Route path = '/listEvents' element ={<ListEvents/>}/>
       </Routes>
     </div>
+    </AuthProvider>
+    
   );
 }
 

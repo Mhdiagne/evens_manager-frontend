@@ -87,4 +87,12 @@
     height: 800px;
 }
 
+.client-contain .error{
+    margin-top: -45px;
+    padding: -10px;
+}
+
+.nav-bar .container .navbar .deco{
+    font-weight: 60px;
+}
 /*End create event*/
