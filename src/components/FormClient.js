@@ -1,10 +1,14 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import axios from 'axios';
 import { userService } from '../_service/user.service';
 import { accountService } from '../_service/account.service';
 import { Alert } from '@mui/material';
 import { Navigate } from 'react-router-dom';
+import { FormControl, InputLabel,OutlinedInput, InputAdornment, IconButton, TextField } from "@mui/material";
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Visibility } from "@mui/icons-material";
+
+
 
 const FormClient = () => {
   const [error, setError] = useState("");
@@ -16,13 +20,23 @@ const FormClient = () => {
     password1: ""
   });
 
-  const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setStateClient((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
+  
+  
+    const handleChange = evt => {
+      const value = evt.target.value;
+      setStateClient({
+        ...stateClient,
+        [evt.target.name]: value
+      });
+    };
+  
 
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
@@ -62,75 +76,15 @@ const FormClient = () => {
     alert("Inscription reussi! Cliquez sur OK pour vous connecter");
     return <Navigate to={"/events"} />;
   }
-
-  return (
-    <div className="client-contain">
-      <div className='error'>
-        {error && (
-          <Alert severity="error" className="alert">
-            {error}
-          </Alert>
-        )}
-      </div>
-      <form onSubmit={handleOnSubmit}>
-        <h3>Crée ton compte Client !</h3>
-        <div className="social-contain">
-          <a href="#" className="social">
-            <i className="fab fa-facebook-f" />
-          </a>
-          <a href="#" className="social">
-            <i className="fab fa-google-plus-g" />
-          </a>
-          <a href="#" className="social">
-            <i className="fab fa-linkedin-in" />
-          </a>
-=======
-import { React, useState } from 'react';
-import { FormControl, InputLabel,OutlinedInput, InputAdornment, IconButton, TextField } from "@mui/material";
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Visibility } from "@mui/icons-material";
-
-const FormClient = () => {
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-    const handleMouseDownPassword = (event) => {
-      event.preventDefault();
-    };
-
-    const [state, setState] = useState({
-        username: "",
-        email: "",
-        password: ""
-      });
-
-      const handleChange = evt => {
-        const value = evt.target.value;
-        setState({
-          ...state,
-          [evt.target.name]: value
-        });
-      };
-    
-      const handleOnSubmit = evt => {
-        evt.preventDefault();
-    
-        const { name, email, password } = state;
-        alert(
-          `You are sign up with name: ${name} email: ${email} and password: ${password}`
-        );
-    
-        for (const key in state) {
-          setState({
-            ...state,
-            [key]: ""
-          });
-        }
-      };
     return (
         <div className="client-contain">
+          <div className='error'>
+            {error && (
+              <Alert severity="error" className="alert">
+                {error}
+              </Alert>
+            )}
+          </div>
             <form onSubmit={handleOnSubmit}>
                 <h3>Crée ton compte Client !</h3>
                 <div className="social-contain">
@@ -151,15 +105,15 @@ const FormClient = () => {
                   id="outlined-start-adornment"
                   sx={{ m: 1}} fullWidth
                   onChange={handleChange}
-                  value={state.username}
+                  value={stateClient.username}
                 />
                 <TextField
                   label="Email"
                   type="email"
                   id="outlined-start-adornment"
                   sx={{ mb: 1}} fullWidth
-                  name="email"
-                  value={state.email}
+                  name="mail"
+                  value={stateClient.mail}
                   onChange={handleChange}
                 />
                 <FormControl sx={{ mb: 1}} fullWidth variant="outlined">
@@ -167,7 +121,7 @@ const FormClient = () => {
                   <OutlinedInput
                     id="outlined-adornment-password"
                     name="password"
-                    value={state.password}
+                    value={stateClient.password}
                     onChange={handleChange}
                     type={showPassword ? 'text' : 'password'}
                     endAdornment={
@@ -189,8 +143,8 @@ const FormClient = () => {
                   <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-password"
-                    name="password"
-                    value={state.password}
+                    name="password1"
+                    value={stateClient.password1}
                     onChange={handleChange}
                     type={showPassword ? 'text' : 'password'}
                     endAdornment={
@@ -210,42 +164,7 @@ const FormClient = () => {
                 </FormControl>
                 <button className="My-btn">S'inscrire</button>
             </form>
->>>>>>> cdeb32062438fe40ad1035ed6fcb7712b5df9c75
         </div>
-        <span>or use your email for registration</span>
-        <input
-          type="text"
-          name="username"
-          value={stateClient.username}
-          onChange={handleChange}
-          placeholder="UserName"
-        />
-        <input
-          type="email"
-          name="mail"
-          value={stateClient.mail}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-        <input
-          type="password"
-          name="password"
-          value={stateClient.password}
-          onChange={handleChange}
-          placeholder="Password"
-        />
-        <input
-          type="password"
-          name="password1"
-          value={stateClient.password1}
-          onChange={handleChange}
-          placeholder="Confirm Password"
-        />
-        <button className="My-btn" type="submit">
-          S'inscrire
-        </button>
-      </form>
-    </div>
   );
 };
 

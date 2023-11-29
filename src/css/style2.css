@@ -101,7 +101,6 @@
 
 }
 
-<<<<<<< HEAD
 .client-contain .error{
     margin-top: -45px;
     padding: -10px;
@@ -110,7 +109,6 @@
 .nav-bar .container .navbar .deco{
     font-weight: 60px;
 }
-=======
 #valider , #annuler {
     width: 110px;
     height: 45px;
@@ -141,5 +139,4 @@
 }
 
 
->>>>>>> cdeb32062438fe40ad1035ed6fcb7712b5df9c75
 /*End create event*/

@@ -1,29 +1,20 @@
-<<<<<<< HEAD
 import axios from "axios";
 import React, { useState } from "react";
 import { accountService } from "../_service/account.service";
 import { Navigate } from "react-router-dom";
 import { Alert } from '@mui/material';
 import { Navbar } from "react-bootstrap";
-function SignInForm(props) {
-  const [navigate, setNavigate] = useState(false);
-
-  const [error, setError] = useState("");
-  const [isAuth, setIsAuth] = useState(false);
-  const [state, setState] = React.useState({
-    username: "",
-    password: ""
-=======
-import React from "react";
 import { FormControl, InputLabel,OutlinedInput, InputAdornment, IconButton, TextField } from "@mui/material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Visibility } from "@mui/icons-material";
 
+
 function SignInForm() {
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const [error, setError] = useState("");
+  const [isAuth, setIsAuth] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
+  const [navigate, setNavigate] = useState(false);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -31,7 +22,6 @@ function SignInForm() {
   const [state, setState] = React.useState({
     username: "user",
     password: "user"
->>>>>>> cdeb32062438fe40ad1035ed6fcb7712b5df9c75
   });
   const handleChange = evt => {
     const value = evt.target.value;
@@ -45,7 +35,6 @@ function SignInForm() {
     console.log(state)
     evt.preventDefault();
 
-<<<<<<< HEAD
     axios.post("http://localhost:8080/login",state)
     .then(response =>{console.log(response)
     accountService.saveToken(response.headers.authorization);
@@ -55,20 +44,7 @@ function SignInForm() {
       sessionStorage.setItem("jwt",token);
       //console.log(!isAuth)
       setNavigate(true);
-
-=======
-    const { email, password } = state;
-    alert(`You are login with email: ${email} and password: ${password}`);
- 
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: ""
-      });
->>>>>>> cdeb32062438fe40ad1035ed6fcb7712b5df9c75
-    }
-    } 
-    )
+    }})
     .catch(error=>console.log(error))
     setError("Username ou password incorrect");
   };
@@ -106,28 +82,12 @@ function SignInForm() {
           </a>
         </div>
         <span>or use your account</span>
-<<<<<<< HEAD
-        <input
-          type="text"
-          name="username"
-          value={state.username}
-          onChange={handleChange}
-          placeholder="UserName"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          onChange={handleChange}
-=======
         <TextField
           label="UserName"
           id="outlined-start-adornment"
           sx={{ m: 1}} fullWidth
           name="username"
           value={state.username}
->>>>>>> cdeb32062438fe40ad1035ed6fcb7712b5df9c75
         />
         <FormControl sx={{ m: 1}} fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
