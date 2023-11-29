@@ -1,26 +1,50 @@
-import React from 'react';
+import { React,useState,useEffect } from 'react';
 import RowPrestataire from './RowPrestataire';
+import { SERVER_URL } from '../constants';
 import sem from '../assets/img/seminaire.jpg'
 import x from '../assets/img/bapteme.jpg'
 import test from '../assets/img/mariage.jpg'
 import d from '../assets/img/magal.jpeg'
 
 const ListPrestataire = () => {
+    const [prestataires, setPrestataires] = useState([]);
+
+    useEffect(()=>{
+        fetchPrestataires();
+    },[]);
+
+    const fetchPrestataires = () => {
+        const token = sessionStorage.getItem("jwt");
+        fetch(SERVER_URL+"event/prestataires", {
+            headers: {Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAxMDMyNzA3fQ.otyDsTjvxJNwSmmtQuK8HkaGfuHNEU_hjGWONXjYQjs"},
+        })
+            .then(response => response.json())
+            .then(data => setPrestataires(data._embedded.prestataires))
+            .catch(err => console.error(err));
+    };
     return (
         <div>
             <h1 style={{margin: "40px 0px 40px", textAlign:"center",}}>Tous les Prestataires</h1>
-            <RowPrestataire 
-                imagep={sem} 
-                altp="Seminaire"
-                nom="Tandem Prestige"
-                fonction="Traiteur"
-                call="77 194 32 18"
-                mail="mhndiaye88@gmail.com"
-                tarif="200 000fr"
-                adresse="Dakar"
-                desc="Tandem Prestige vous accompagne avec des plats prestigieux à l’image de votre       anniversaire, mariage, dîner... "
-            />
-            <RowPrestataire 
+            {
+                prestataires.map(pres => {                                                          
+                    console.log(pres.image);
+                    return(
+                    <RowPrestataire 
+                    key={pres.id}
+                    imagep={pres.image} 
+                    altp="pas d'image"
+                    nom={pres.nomEntreprise}
+                    fonction={pres.fonction}
+                    call={pres.telephone}
+                    mail={pres.email}
+                    tarif={pres.tarif}
+                    adresse={pres.adresse}
+                    desc={pres.desEntreprise}
+                    />
+                    );
+                })
+            }
+            {/* <RowPrestataire 
                 imagep={x} 
                 altp="Seminaire"
                 nom="Hallo Decoration"
@@ -96,7 +120,7 @@ const ListPrestataire = () => {
                 tarif="400 000fr"
                 adresse="Ziguinchor"
                 desc="NessNessi vision vous propose des photos nette et des montages videos à la hauteur de vos attentes... "
-            />
+            /> */}
         </div>
     );
 };
