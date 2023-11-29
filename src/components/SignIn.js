@@ -20,8 +20,8 @@ function SignInForm() {
   };
   
   const [state, setState] = React.useState({
-    username: "user",
-    password: "user"
+    username: "",
+    password: ""
   });
   const handleChange = evt => {
     const value = evt.target.value;
@@ -87,6 +87,7 @@ function SignInForm() {
           id="outlined-start-adornment"
           sx={{ m: 1}} fullWidth
           name="username"
+          onChange={handleChange}
           value={state.username}
         />
         <FormControl sx={{ m: 1}} fullWidth variant="outlined">
@@ -95,6 +96,7 @@ function SignInForm() {
             id="outlined-adornment-password"
             name="password"
             value={state.password}
+            onChange={handleChange}
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
