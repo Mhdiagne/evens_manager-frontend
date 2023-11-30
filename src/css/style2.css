@@ -138,5 +138,8 @@
 
 }
 
+#same-line{
+    display: flex;
+}
 
 /*End create event*/

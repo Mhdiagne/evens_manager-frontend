@@ -63,7 +63,7 @@ function SignInForm() {
       <div>
         {error && (
           <Alert severity="error" className="alert">
-            {error}
+            {error} autoHideDuration={3000}
           </Alert>
         )}
       </div>

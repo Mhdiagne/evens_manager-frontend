@@ -54,7 +54,8 @@ const FormPrestataire = () => {
         username: '',
         email: '',
         password: '',
-        password1: ''
+        password1: '',
+        role : 'prestataire'
       });
     } else if (statePrestataire.password.length < 6) {
     setSuccess('');

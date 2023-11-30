@@ -5,6 +5,7 @@ import sem from '../assets/img/seminaire.jpg'
 import x from '../assets/img/bapteme.jpg'
 import test from '../assets/img/mariage.jpg'
 import d from '../assets/img/magal.jpeg'
+import { accountService } from '../_service/account.service';
 
 const ListPrestataire = () => {
     const [prestataires, setPrestataires] = useState([]);
@@ -14,9 +15,9 @@ const ListPrestataire = () => {
     },[]);
 
     const fetchPrestataires = () => {
-        const token = sessionStorage.getItem("jwt");
+        const token = accountService.getToken("jwt");
         fetch(SERVER_URL+"event/prestataires", {
-            headers: {Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzAxMDMyNzA3fQ.otyDsTjvxJNwSmmtQuK8HkaGfuHNEU_hjGWONXjYQjs"},
+            headers: {Authorization: token},
         })
             .then(response => response.json())
             .then(data => setPrestataires(data._embedded.prestataires))

@@ -9,11 +9,11 @@ import SignInForm from "./components/SignIn";
 import { useState } from "react";
 import { Navbar } from "react-bootstrap";
 import { AuthProvider } from "./components/AuthProvider";
+import { accountService } from "./_service/account.service";
 
 
 
 function App() {
-
   return (
     <AuthProvider>
         <div className="App"> 
