@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { accountService } from "../_service/account.service";
 import { Navigate } from "react-router-dom";
 import { Alert } from '@mui/material';
-import { Navbar } from "react-bootstrap";
+
 import { FormControl, InputLabel,OutlinedInput, InputAdornment, IconButton, TextField } from "@mui/material";
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Visibility } from "@mui/icons-material";
@@ -12,6 +12,7 @@ import { Visibility } from "@mui/icons-material";
 function SignInForm() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = useState("");
+
   const [isAuth, setIsAuth] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [navigate, setNavigate] = useState(false);
@@ -20,8 +21,8 @@ function SignInForm() {
   };
   
   const [state, setState] = React.useState({
-    username: "user",
-    password: "user"
+    username: "",
+    password: ""
   });
   const handleChange = evt => {
     const value = evt.target.value;
@@ -38,21 +39,20 @@ function SignInForm() {
     axios.post("http://localhost:8080/login",state)
     .then(response =>{console.log(response)
     accountService.saveToken(response.headers.authorization);
-      const token = response.headers.get("Authorisation");
     if (accountService.isLogged(response.headers.authorization)){
+
       setIsAuth(true);
-      sessionStorage.setItem("jwt",token);
-      //console.log(!isAuth)
-      setNavigate(true);
-    }})
+      sessionStorage.setItem("jwt", response.headers.authorization);
+      setNavigate(true)
+    }else{
+      setIsAuth(false)
+    }
+
+  })
     .catch(error=>console.log(error))
     setError("Username ou password incorrect");
   };
 
-  const logout=()=>{
-    sessionStorage.removeItem("jwt");
-    setIsAuth(false);
-  }
 
   if (navigate){
     return <Navigate to={"/events"} />
@@ -88,6 +88,7 @@ function SignInForm() {
           sx={{ m: 1}} fullWidth
           name="username"
           value={state.username}
+          onChange={handleChange}
         />
         <FormControl sx={{ m: 1}} fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -95,6 +96,7 @@ function SignInForm() {
             id="outlined-adornment-password"
             name="password"
             value={state.password}
+            onChange={handleChange}
             type={showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">
