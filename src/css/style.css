@@ -464,7 +464,9 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 
 /*** Contact End ***/
-
+.event-img{
+    height: 300px;
+}
 
 /*** Footer Start ***/
 .footer .footer-item a.text-body:hover {

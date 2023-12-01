@@ -32,7 +32,7 @@ const ListPrestataire = () => {
                     return(
                     <RowPrestataire 
                     key={pres.id}
-                    imagep={pres.image} 
+                    imagep={sem} 
                     altp="pas d'image"
                     nom={pres.nomEntreprise}
                     fonction={pres.fonction}
@@ -45,7 +45,7 @@ const ListPrestataire = () => {
                     );
                 })
             }
-            {/* <RowPrestataire 
+            <RowPrestataire 
                 imagep={x} 
                 altp="Seminaire"
                 nom="Hallo Decoration"
@@ -121,7 +121,7 @@ const ListPrestataire = () => {
                 tarif="400 000fr"
                 adresse="Ziguinchor"
                 desc="NessNessi vision vous propose des photos nette et des montages videos à la hauteur de vos attentes... "
-            /> */}
+            />
         </div>
     );
 };

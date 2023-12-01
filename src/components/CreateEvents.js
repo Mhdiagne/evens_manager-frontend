@@ -20,14 +20,14 @@ const CreateEvents = (props) => {
     const [prestataires, setPrestataires] = useState([]);
     const token = accountService.getToken("jwt");
     const [options, setOptions] = useState([]);
-    let all=[];
     const [dataIn, setDataIn] = useState({
       nomEvenement: "",
       typeEvenement: "",
       duree: 0,
       lieu: "",
       dateEvenement: "",
-      description: ""
+      description: "",
+      pres:[],
     });
 
     useEffect(()=>{
@@ -39,19 +39,28 @@ const CreateEvents = (props) => {
         fetchPrestataires();
       }
         setOpen(true);
+        display();
     };
 
     const handleClose = () => {
       setOpen(false);
     };
 
-    const handleChange = evt => {
+    const handleChange = (evt) => {
       const value = evt.target.value;
       setDataIn({
         ...dataIn,
         [evt.target.name]: value
       });
     };
+
+    const handlePresChange = (event, newValue) => {
+      setDataIn({
+        ...dataIn,
+        pres: newValue,
+      });
+    };
+    
 
     const handleTypeEvenementChange = (event, newValue) => {
       setDataIn({
@@ -92,9 +101,16 @@ const CreateEvents = (props) => {
     const list = ["Familliale","Religieuse","Seminaire"];
 
   const display=()=>{
-    prestataires.map(
-      
-    )
+    const newOptions = prestataires.map(opt => ({
+      label: 'Option 1',
+      profile: opt.image,
+      name: opt.nomEntreprise,
+      note: opt.starRating,
+      address:opt.addresse,
+      func:opt.fonction,
+      tar:opt.tarif,
+    }));
+    setOptions(newOptions);   
   }
 
   return (
@@ -160,7 +176,11 @@ const CreateEvents = (props) => {
                                   <li {...props}>
                                       <div>
                                           {/* <img alt="non-image" src={option.profile} style={{ marginRight: '8px', width: '45px', height: '45px', borderRadius: '50%' }} /> */}
-                                          <p>{option.name}</p>
+                                          <b>{option.name}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          {option.func}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          {option.address}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          {option.tar}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                          {option.note}
                                       </div>
                                   </li>
                               )}
@@ -171,6 +191,7 @@ const CreateEvents = (props) => {
                                   label="Ajouter vos prestataires"
                                   />
                               )}
+                              onChange={handlePresChange}
                               required
                   />
             </div>

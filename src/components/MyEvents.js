@@ -93,7 +93,7 @@ export default function DataGridDemo() {
 
 
   const fetchEvents = (token,userId) => {
-      fetch(SERVER_URL+`event/evenements/${userId}`, {
+      fetch(SERVER_URL+`event/evenements/${userId}/client`, {
           headers: {Authorization: token},
       })
           .then(response => response.json())
