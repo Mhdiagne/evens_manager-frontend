@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { SERVER_URL } from '../constants';
 
 import { Autocomplete,InputAdornment,DialogContent,DialogActions,Dialog,TextField,Button } from '@mui/material';
@@ -16,14 +16,12 @@ import axios from 'axios';
 
 
 const CreateEvents = (props) => {
-    const [open, setOpen] = React.useState(false);
-    const [prestataires, setPrestataires] = React.useState([]);
+    const [open, setOpen] = useState(false);
+    const [prestataires, setPrestataires] = useState([]);
     const token = accountService.getToken("jwt");
-    const [options, setOptions] = React.useState([
-      {label:"", profile:"",name:""}
-    ]);
-
-    const [dataIn, setDataIn] = React.useState({
+    const [options, setOptions] = useState([]);
+    let all=[];
+    const [dataIn, setDataIn] = useState({
       nomEvenement: "",
       typeEvenement: "",
       duree: 0,
@@ -32,13 +30,15 @@ const CreateEvents = (props) => {
       description: ""
     });
 
-    React.useEffect(()=>{
-
+    useEffect(()=>{
+        fetchPrestataires();
     },[]);
-  
+
     const handleClickOpen = () => {
+      if (prestataires!==null){
+        fetchPrestataires();
+      }
         setOpen(true);
-        display();
     };
 
     const handleClose = () => {
@@ -60,15 +60,16 @@ const CreateEvents = (props) => {
       });
     };
     const fetchPrestataires = () => {
-          const token = accountService.getToken("jwt");
-          fetch(SERVER_URL+"event/prestataires", {
-              headers: {Authorization: token},
-          })
-              .then(response => response.json())
-              .then(data => setPrestataires(data._embedded.prestataires))
-              .catch(err => console.error(err));
-              console.log(token);
-    };
+      const token = accountService.getToken("jwt");
+      fetch(SERVER_URL+"event/prestataires", {
+          headers: {Authorization: token},
+      })
+          .then(response => response.json())
+          .then(data => setPrestataires(data._embedded.prestataires))
+          .catch(err => console.error(err));
+          console.log(prestataires);
+  };
+
 
     const postEvenement = () => {
       const token = accountService.getToken("jwt");
@@ -88,18 +89,13 @@ const CreateEvents = (props) => {
           console.log(token);
     }
 
-
     const list = ["Familliale","Religieuse","Seminaire"];
-    const display = () =>{
-      if(open===true){
-        fetchPrestataires();
-        const newOptions = prestataires.map(opt => ({
-          profile: opt.image,
-          name: opt.nomEntreprise
-        }));
-        setOptions(newOptions);
-      }
-    }
+
+  const display=()=>{
+    prestataires.map(
+      
+    )
+  }
 
   return (
     <React.Fragment >
@@ -155,28 +151,28 @@ const CreateEvents = (props) => {
                     required
                 />
                 <Autocomplete
-                            multiple
-                            sx={{m:2, width:"750px"}}
-                            id="ajout-pretataires"
-                            options={options}
-                            getOptionLabel={(option) => option.name}
-                            renderOption={(props, option, { selected }) => (
-                                <li {...props}>
-                                    <div>
-                                        <img src={option.profile} style={{ marginRight: '8px', width: '45px', height: '45px', borderRadius: '50%' }} />
-                                        {option.name}
-                                    </div>
-                                </li>
-                            )}
-                            renderInput={(params) => (
-                                <TextField
-                                {...params}
-                                variant="outlined"
-                                label="Ajouter vos prestataires"
-                                />
-                            )}
-                            required
-                        />
+                              multiple
+                              sx={{m:2, width:"750px"}}
+                              id="ajout-pretataires"
+                              options={options}
+                              // getOptionLabel={option => option.name}
+                              renderOption={(props, option, { selected }) => (
+                                  <li {...props}>
+                                      <div>
+                                          {/* <img alt="non-image" src={option.profile} style={{ marginRight: '8px', width: '45px', height: '45px', borderRadius: '50%' }} /> */}
+                                          <p>{option.name}</p>
+                                      </div>
+                                  </li>
+                              )}
+                              renderInput={(params) => (
+                                  <TextField
+                                  {...params}
+                                  variant="outlined"
+                                  label="Ajouter vos prestataires"
+                                  />
+                              )}
+                              required
+                  />
             </div>
         </DialogContent>
         <DialogActions sx={{m:2}}>

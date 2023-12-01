@@ -85,7 +85,8 @@ export default function DataGridDemo() {
     const token = accountService.getToken("jwt");
     const client = jwtDecode(token);
     const clientId = client.id;
-    console.log(client,clientId);
+    const clientr = client.role;
+    console.log(client,clientId,clientr);
     fetchEvents(token,clientId);
     console.log(rows);
   },[]);
